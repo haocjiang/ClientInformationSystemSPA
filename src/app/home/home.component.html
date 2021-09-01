@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-9">
+      <h2 class="header">ClientTable</h2>
+      <div class="table-responsive">
+        <div class="scrollbar">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phones</th>
+                <th scope="col">Address</th>
+                <th scope="col">AddedOn</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cli of client">
+                <th scope="row"><a [routerLink]="['interactions/client/', cli.id]">{{cli.name}}</a></th>
+                <td>{{cli.email}}</td>
+                <td>{{cli.phones}}</td>
+                <td>{{cli.address}}</td>
+                <td>{{cli.addedOn}}</td>
+                <td><a class="btn btn-secondary" [routerLink]="['client/', cli.id]" role="button">Update</a></td>
+                <td><a class="btn btn-secondary" (click)="deleteClient(cli.id)" role="button">Delete</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <h2 class="sub-header">EmployeeTable</h2>
+      <div class="table-responsive">
+        <div class="scrollbar">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Designation</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let emp of employee">
+                <th scope="row"><a [routerLink]="['interactions/employee/', emp.id]">{{emp.name}}</a></th>
+                <td>{{emp.designation}}</td>
+                <td><a class="btn btn-secondary" [routerLink]="['employee/', emp.id]" role="button">Update</a></td>
+                <td><a class="btn btn-secondary" (click)="deleteEmployee(emp.id)" role="button">Delete</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-center">
+    <a class="btn btn-secondary mr-2" [routerLink]="['client']" role="button">Add New Client</a>
+    <a class="btn btn-secondary mr-2" [routerLink]="['employee']" role="button">Add New Employee</a>
+    <a class="btn btn-secondary mr-2" [routerLink]="['addInteractions']" role="button">Add New Interaction</a>
+    <a class="btn btn-secondary" [routerLink]="['interactions']" role="button">View All Interactions</a>
+  </div>

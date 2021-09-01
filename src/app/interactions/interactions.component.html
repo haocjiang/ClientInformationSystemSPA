@@ -1,0 +1,32 @@
+<<div class="table-responsive">
+    <h2 class="sub-header">View All Interactions</h2>
+    <div class="scrollbar">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ClientId</th>
+            <th scope="col">EmployeeId</th>
+            <th scope="col">IntType</th>
+            <th scope="col">IntDate</th>
+            <th scope="col">Remarks</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let interact of interaction">
+            <td>{{interact.clientId}}</td>
+            <td>{{interact.empId}}</td>
+            <td>{{interact.intType}}</td>
+            <td>{{interact.intDate}}</td>
+            <td>{{interact.remarks}}</td>
+            <td><a class="btn btn-secondary" [routerLink]="['/interactions/', interact.id]" role="button">Update</a></td>
+            <td><a class="btn btn-secondary" (click)="deleteInteraction(interact.id)" role="button">Delete</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <a class="btn btn-secondary mt-3" [routerLink]="['/addInteractions']" role="button">Add New Interaction</a>
+  </div>

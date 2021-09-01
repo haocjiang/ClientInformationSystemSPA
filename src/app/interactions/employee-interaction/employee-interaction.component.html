@@ -1,0 +1,35 @@
+<div class="table-responsive">
+    <h2 class="header">View Interactions By Employee</h2>
+    <div class="scrollbar">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">EmployeeId</th>
+                    <th scope="col">ClientId</th>
+                    <th scope="col">IntType</th>
+                    <th scope="col">IntDate</th>
+                    <th scope="col">Remarks</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody *ngIf="result">
+                <tr *ngFor="let interact of interaction">
+                    <td>{{interact.empId}}</td>
+                    <td>{{interact.clientId}}</td>
+                    <td>{{interact.intType}}</td>
+                    <td>{{interact.intDate | date: 'shortDate'}}</td>
+                    <td>{{interact.remarks}}</td>
+                    <td><a class="btn btn-primary" [routerLink]="['interaction/', interact.id]" role="button">Update</a></td>
+                    <td><a class="btn btn-danger" (click)="deleteInteraction(interact.id)" role="button">Delete</a></td>
+                </tr>
+            </tbody>
+            <div class="alert alert-warning" role="alert" *ngIf="!result">
+                No Result Found.
+            </div>
+        </table>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <a class="btn btn-primary" [routerLink]="['/addInteractions']" role="button">Add New Interactions</a>
+</div>
